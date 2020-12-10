@@ -5,6 +5,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neural_network import MLPClassifier
 import re
 from scipy import sparse
+import os
+
 
 def load_data(data_path):
     alldata_df = pd.read_csv(data_path) 
@@ -64,18 +66,14 @@ if __name__ == "__main__":
     y_train_vec, y_test_vec = vectorize_labels(y_train, y_test)
     # training and test data and labels (everything) is in vectors (numbers) --ready to train a model
 
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    if not os.path.exists(os.path.join(current_dir, str("data/"))):
+        os.makedirs(os.path.join(current_dir, str("data/")))
     sparse.save_npz("data/X_train_vec.npz", X_train_vec)
     sparse.save_npz("data/X_test_vec.npz", X_test_vec)
     np.save("data/y_train_vec.npy", y_train_vec)
     np.save("data/y_test_vec.npy", y_test_vec)
 
-    # #Create classifier instance
-    # clf = MLPClassifier(alpha=0.001, verbose=True, activation='relu') #need to add early stopping or something to stop the code
-    # #train classifier
-    # history = clf.fit(X_train_vec,y_train_vec)
-
-    # #use that same clf model to predict over
-    # # clf.score(X_te...)
 
 
 
