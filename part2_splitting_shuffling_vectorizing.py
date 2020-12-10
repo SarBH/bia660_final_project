@@ -2,10 +2,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.neural_network import MLPClassifier
 import re
 from scipy import sparse
 import os
+from joblib import dump, load
+
 
 
 def load_data(data_path):
@@ -27,6 +28,7 @@ def vectorize_training_data(X_train, X_test):
     counter = CountVectorizer()
     counter.fit(X_train)
     #count the number of times each term appears in a document and transform each doc into a count vector
+    fitted_counter = dump(counter, "fitted_counter.joblib")
     X_train_vec = counter.transform(X_train)#transform the training data
     X_test_vec = counter.transform(X_test)#transform the testing data
     return X_train_vec, X_test_vec
