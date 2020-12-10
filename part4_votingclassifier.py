@@ -10,7 +10,7 @@ from sklearn.ensemble import VotingClassifier
 import numpy as np
 from scipy import sparse
 from sklearn.metrics import accuracy_score, confusion_matrix
-
+from joblib import dump, load
 
 def import_data():
     X_train_vec = sparse.load_npz('data\X_train_vec.npz')
@@ -42,6 +42,8 @@ if __name__ == "__main__":
     #train all classifier on the same datasets
     VT.fit(X_train_vec,y_train_vec)
 
+
+    trained_model = dump(VT, 'trained_model.joblib')
     #use hard voting to predict (majority voting)
     pred=VT.predict(X_test_vec)
 
