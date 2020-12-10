@@ -40,3 +40,8 @@ After running grid search we have a good idea of which models perform best for t
 2. The Voting classifier instance is created using the models we chose.
 3. The accuracy of the voting classifier is printed, as well as a confusion matrix.
     
+# How to run?
+1. Edit the the part1 script with the URL and job type (lines 110+) as indicated above. It will create a CSV and an alreadyseen.txt file that will prevent repeats.
+2. When you are done scraping and you are satisfied with the number of jobs you got, simply run the part2 script as is. *No inputs are needed on part 2 script.*
+3. Run the part3 script as is, or if you have a clue on the models and/or hyperparameters that you think are worth trying, you can run it with those alone to save computation time. If you have no clue on what would work, simply run it as is and cover all your bases. *No inputs are needed on part 3 script*. I recommend you take note of the outputs of this file, since you dont want to have to run it again, its very slow.
+4. Open part4 script and enter the hyperparametes that you found on the output of part3 on lines 27-33. Choose which of those models you want to use to predict, and build a predictors list similar to the ones on lines 36-37. Run the code to obtain an accuracy and confusion matrix.
