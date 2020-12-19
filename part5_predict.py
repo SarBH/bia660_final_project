@@ -43,8 +43,13 @@ if __name__ == "__main__":
     
     output = open( 'output.csv', 'w', encoding='UTF-8' )
     writer = csv.writer( output, lineterminator='\n' )
-    writer.writerow(['predictions'])
     for prediction in pred:
-        writer.writerow([prediction])
+        if prediction == 0:
+            write = "data engineer"
+        elif prediction == 1:
+            write = "data scientist"
+        elif prediction == 2:
+            write = "software engineer"
+        writer.writerow([write])
 
     print("predictions saved to output.csv")
